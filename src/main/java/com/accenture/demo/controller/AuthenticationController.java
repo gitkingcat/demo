@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class AuthenticationController {
 
-
     @GetMapping("/login")
     public String getSignInPage(){
         return "login";
@@ -18,8 +17,10 @@ public class AuthenticationController {
         return "success";
     }
     @GetMapping("/signup")
-    public String getSignUpPage(){
-        return "signup";
+    public String getSignUpPage(){ return "signup";}
+    @GetMapping("/feed")
+    public String getFeedPage(){
+        return "feed";
     }
 
 
