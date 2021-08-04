@@ -133,16 +133,16 @@
 <body>
 <div class="main-block">
     <h1>Login form</h1>
-    <form action="/">
+    <form method="post" action="/login">
 
-        <label id="icon" for="name"><i class="fas fa-envelope"></i></label>
-        <input type="text" name="name" id="name" placeholder="Email" required/>
-        <label id="icon" for="name"><i class="fas fa-unlock-alt"></i></label>
-        <input type="password" name="name" id="name" placeholder="Password" required/>
+        <label id="icon" for="username"><i class="fas fa-envelope"></i></label>
+        <input type="text" id="username" name="username" placeholder="Email" required/>
+        <label id="icon" for="password"><i class="fas fa-unlock-alt"></i></label>
+        <input type="password" name="password" id="password" placeholder="Password" required/>
 
         <div class="btn-block">
             <p>By clicking Register, you agree on our <a href="https://www.w3docs.com/privacy-policy">Privacy Policy for W3Docs</a>.</p>
-            <button type="submit" href="/">Submit</button>
+            <button type="submit" >Submit</button>
         </div>
     </form>
 </div>

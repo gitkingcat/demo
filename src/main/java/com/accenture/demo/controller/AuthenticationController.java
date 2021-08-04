@@ -12,16 +12,13 @@ public class AuthenticationController {
     public String getSignInPage(){
         return "login";
     }
-    @GetMapping("/success")
-    public String getSuccessPage(){
-        return "success";
+    @GetMapping("")
+    public String redirectToLogin(){
+        return "redirect:login";
     }
     @GetMapping("/signup")
     public String getSignUpPage(){ return "signup";}
-    @GetMapping("/feed")
-    public String getFeedPage(){
-        return "feed";
-    }
+
 
 
 }

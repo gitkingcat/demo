@@ -21,8 +21,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
-
-
+    private final UserDetailsService userDetailsService;
+    @Autowired
+    public SecurityConfig(@Qualifier("userDetailServiceImpl")UserDetailsService userDetailsService) {
+        this.userDetailsService = userDetailsService;
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -31,27 +34,28 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/signup").permitAll()
-                .antMatchers("/feed").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login").permitAll()
-                .defaultSuccessUrl("/success")
+                .loginProcessingUrl("/login").permitAll()
+                .defaultSuccessUrl("/feed", true)
                 .and()
                 .logout().permitAll();
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("user1").password(bCryptPasswordEncoder().encode("user1Pass")).roles("USER")
-                .and()
-                .withUser("user2").password(bCryptPasswordEncoder().encode("user2Pass")).roles("USER")
-                .and()
-                .withUser("admin").password(bCryptPasswordEncoder().encode("adminPass")).roles("ADMIN");
+        auth.authenticationProvider(daoAuthenticationProvider());
     }
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web
+                .ignoring()
+                .antMatchers("/resources/**","/fonts/**","/css/**","/vendor/**","/images/**","/js/**","/animate/**","/bootstarp/**");
 
+    }
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
@@ -62,7 +66,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationManager customAuthenticationManager() throws Exception {
         return authenticationManager();
     }
-
+    @Bean
+    protected DaoAuthenticationProvider daoAuthenticationProvider() {
+        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+        daoAuthenticationProvider.setPasswordEncoder(bCryptPasswordEncoder());
+        daoAuthenticationProvider.setUserDetailsService(userDetailsService);
+        return daoAuthenticationProvider;
+    }
 }
 
 

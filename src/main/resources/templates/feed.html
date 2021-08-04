@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>Simple registration form</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
@@ -123,7 +123,9 @@
 
 <div class="main-block">
     <h1>Feed</h1>
-
+    <div sec:authorize="hasAuthority('reservations:write')">
+        <h2 th:align="center">Secret text only for Admins.</h2>
+    </div>
 
 </div>
 

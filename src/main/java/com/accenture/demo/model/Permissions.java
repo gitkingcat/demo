@@ -1,12 +1,12 @@
 package com.accenture.demo.model;
 
-public enum Permission {
+public enum Permissions {
     USERS_READ("reservations:read"),
     USERS_WRITE("reservations:write");
 
     private final String permission;
 
-    Permission(String permission) {
+    Permissions(String permission) {
         this.permission = permission;
     }
 
