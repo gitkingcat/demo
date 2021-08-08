@@ -9,10 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class ApplicationController {
 
-
     @GetMapping("/feed")
-    public String getActualFeed(Model model){
-
+    public String getActualFeed(){
         return "feed";
     }
 
