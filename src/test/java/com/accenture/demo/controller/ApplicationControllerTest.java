@@ -7,8 +7,8 @@ import org.springframework.ui.Model;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ApplicationControllerTest {
-    @Mock
-    ApplicationController applicationController;
+
+    ApplicationController applicationController = new ApplicationController();
     @Test
     void getActualFeed() {
         assertEquals("feed",applicationController.getActualFeed());

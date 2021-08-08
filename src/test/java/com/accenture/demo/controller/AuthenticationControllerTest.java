@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class AuthenticationControllerTest {
 
-    @Mock
+
     AuthenticationController authenticationController = new AuthenticationController();
     @Test
     void getSignInPage() {
