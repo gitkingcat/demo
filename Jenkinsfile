@@ -17,7 +17,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                bat ".\mvnw test"
+                bat "mvn test"
             }
         }
     }
