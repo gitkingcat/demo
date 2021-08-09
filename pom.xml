@@ -15,6 +15,7 @@
 	<description>Project for Roadmap</description>
 	<properties>
 		<java.version>11</java.version>
+		<sonar.projectKey>HomeProject</sonar.projectKey>
 	</properties>
 	<dependencies>
 
