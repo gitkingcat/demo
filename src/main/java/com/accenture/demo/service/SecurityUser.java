@@ -1,6 +1,5 @@
 package com.accenture.demo.service;
 import com.accenture.demo.model.User;
-import com.accenture.demo.model.UserStatus;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
